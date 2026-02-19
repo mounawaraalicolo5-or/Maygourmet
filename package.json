@@ -2,7 +2,7 @@
   "name": "maygourmet",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "serveur.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/mounawaraalicolo5-or/Maygourmet/issues"
   },
-  "homepage": "https://github.com/mounawaraalicolo5-or/Maygourmet#readme"
+  "homepage": "https://github.com/mounawaraalicolo5-or/Maygourmet#readme",
+  "dependencies": {
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-myconnection": "^1.0.4",
+    "mysql2": "^3.17.0",
+    "nodemon": "^3.1.11"
+  }
 }
