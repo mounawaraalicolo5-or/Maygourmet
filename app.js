@@ -133,8 +133,35 @@ req.getConnection((erreur, connection) => {
     }
 });
  
+
    
 });
+
+//API Route pour supprimer un membre
+
+app.delete('/api/equipe/:id', (req,res)=> {
+    const idMembreEquipe = req.params.id;
+    const queryDelete = "DELETE FROM equipe WHERE id = ?";
+
+    req.getConnection((erreur, connection)=> {
+        if (erreur) {
+            console.log("Erreur suppression equipe : ", erreur);
+        } else {
+            connection.query(queryDelete, [idMembreEquipe], (err,resultat)=> {
+                if (err) {
+                    console.log("Erreur requete suppression : ", err);
+                } else {
+                    console.log("Bravo! Le membre est supprimé dans la table equipe");
+                    //res.status(200).redirect("/api/accueil");
+
+                    res.status(200).json({routeAccueil: "/api/accueil"});
+                }
+            });
+        }
+    });
+});
+
+25
 
 app.get('/api/fournisseur', (req,res) => {
     console.log("je passe dans /api/fournisseur");

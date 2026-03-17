@@ -1,24 +1,68 @@
+<!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mon équipe</title>
-    </head>
-    <body>
-        <h1>Voici mon équipe</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Notre équipe - May Gourmet</title>
+  <link rel="stylesheet" href="/css/equipe.css">
+  <script src="/js/script.js"></script>
+</head>
 
-        <% if(equipe.length > 0){ %>
-            <% equipe.forEach(membre => { %>
-                <div class="membre">
-                    <h2><%= membre.prenom %> <%= membre.nom %></h2>
-                    <p><%= membre.email %></p>
-                </div>
-            <% }) %>
-        <% } else { %>
-            <p>Aucun membre trouvé dans l'équipe.</p>
-        <% } %>
+<body>
 
-        <img class="team-image" src="/images/photo-1740252117027-4275d3f84385"
+  <!-- Inclure le fichier navbar.ejs pour avoir la barre de navigation -->
+   <%- include('navbar'); %>
 
-    </body>
+  <!-- Section présentation -->
+  <section>
+    <h2>Qui sommes-nous ?</h2>
+    <p>
+      Chez <strong>May Gourmet</strong>, notre équipe est composée de
+      professionnels passionnés par la cuisine et l’accueil.
+    </p>
+  </section>
+
+  <!-- Section membres de l'équipe -->
+ <section>
+  <h2>L’équipe</h2>
+  <% resultatEquipe.forEach(result => { %> <div class="card">
+      <img class="team" src="/image/jpeg.jpg">
+      <div class="container">
+        <h4><%= result.nom %></h4>
+        <p><%= result.poste %></p> <br>
+        <input type="button" value="supprimer" onclick="supprimer('<%= result.id %>')">
+      </div>
+    </div>
+  <% }); %>
+ </section>
+
+    <article>
+      <h3>Chef cuisinier</h3>
+      <p>
+        Notre chef élabore des plats raffinés à partir de produits frais
+        et de saison.
+      </p>
+    </article>
+
+    <article>
+      <h3>Sous-chef</h3>
+      <p>
+        Il accompagne le chef et veille à la qualité et à la régularité
+        des plats.
+      </p>
+    </article>
+
+    <article>
+      <h3>Équipe en salle</h3>
+      <p>
+        Toujours souriante, notre équipe en salle vous garantit
+        un service chaleureux et professionnel.
+      </p>
+    </article>
+  </section>
+
+  <!-- Pied de page -->
+  <footer>
+    <p>&copy; 2026 - May Gourmet</p>
+  </footer>
+</body>
+</html>
