@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,10 +10,12 @@
 
 <body>
 
-  <!-- Inclure le fichier navbar.ejs pour avoir la barre de navigation -->
+   <!-- Inclure le fichier navbar.ejs pour avoir la barre de navigation -->
+   <!--
    <%- include('navbar'); %>
 
   <!-- Section présentation -->
+  <!--
   <section>
     <h2>Qui sommes-nous ?</h2>
     <p>
@@ -22,7 +25,8 @@
   </section>
 
   <!-- Section membres de l'équipe -->
- <section>
+  <!--
+  <section>
   <h2>L’équipe</h2>
   <% resultatEquipe.forEach(result => { %> <div class="card">
       <img class="team" src="/image/jpeg.jpg">
@@ -66,3 +70,249 @@
   </footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Notre équipe - May Gourmet</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    /* BODY + FOND */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('/image/fond.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #2c3e50;
+    }
+
+    /* TITRES */
+    h2 {
+      text-align: center;
+      color: #f1c40f;
+      margin-bottom: 20px;
+    }
+
+    /* SECTIONS */
+    section {
+      background: rgba(255,255,255,0.92);
+      margin: 30px auto;
+      padding: 30px;
+      width: 85%;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+
+    /* FORMULAIRE AJOUTER MEMBRE */
+    form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form input {
+      width: 80%;
+      padding: 10px;
+      margin: 8px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background: linear-gradient(45deg, #e67e22, #f39c12);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      transform: scale(1.05);
+    }
+
+    /* ÉQUIPE */
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      position: relative;
+      width: 260px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .team {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    }
+
+    .container {
+      position: absolute;
+      bottom: 0;
+      color: white;
+      padding: 15px;
+    }
+
+    .container h4 {
+      margin: 0;
+      font-size: 20px;
+      color: #f1c40f;
+    }
+
+    .container p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    input[type="button"] {
+      margin-top: 8px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    input[type="button"]:hover {
+      transform: scale(1.05);
+    }
+
+    /* ARTICLES */
+    article {
+      background: rgba(255,255,255,0.95);
+      margin: 20px auto;
+      padding: 20px;
+      width: 80%;
+      border-left: 6px solid #e67e22;
+      border-radius: 10px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: rgba(0,0,0,0.8);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+
+      section, article {
+        width: 90%;
+      }
+    }
+
+  </style>
+  <script src="/js/script.js"></script>
+</head>
+<body>
+
+  <%- include('navbar'); %>
+
+  <!-- PRÉSENTATION -->
+  <section>
+    <h2>Qui sommes-nous ?</h2>
+    <p>
+      Chez <strong>May Gourmet</strong>, notre équipe est composée de
+      professionnels passionnés par la cuisine et l’accueil.
+    </p>
+  </section>
+
+  <!-- FORMULAIRE AJOUTER MEMBRE -->
+  <section>
+    <h2>Ajouter un membre</h2>
+    <form action="/ajouter" method="POST">
+      <input type="text" name="nom" placeholder="Nom" required><br>
+      <input type="text" name="poste" placeholder="Poste" required><br>
+      <input type="text" name="image" placeholder="Lien image"><br>
+      <button type="submit">Ajouter</button>
+    </form>
+  </section>
+
+  <!-- ÉQUIPE -->
+  <section>
+    <h2>L’équipe</h2>
+    <div class="team-container">
+      <% resultatEquipe.forEach(result => { %>
+        <div class="card">
+          <img class="team" src="<%= result.image || '/image/jpeg.jpg' %>">
+          <div class="container">
+            <h4><%= result.nom %></h4>
+            <p><%= result.poste %></p>
+            <input type="button" value="Supprimer" onclick="supprimer('<%= result.id %>')">
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- RÔLES -->
+  <section>
+    <article>
+      <h3> Chef cuisinier</h3>
+      <p>Notre chef élabore des plats raffinés à partir de produits frais et de saison.</p>
+    </article>
+    <article>
+      <h3> Sous-chef</h3>
+      <p>Il accompagne le chef et veille à la qualité et à la régularité des plats.</p>
+    </article>
+    <article>
+      <h3> Équipe en salle</h3>
+      <p>Toujours souriante, notre équipe en salle vous garantit un service chaleureux et professionnel.</p>
+    </article>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p></p>
+  </footer>
+
+  
+</body>
+</html>
+
+
+
