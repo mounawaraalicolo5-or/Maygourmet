@@ -48,29 +48,4 @@ section {
   font-size: 18px;
 }
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-              url('/image/fond.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
-css id="buttonform" 
-  
-#showFormBtn {
-  background: linear-gradient(45deg, #e67e22, #f39c12);
-  border: none;
-  padding: 10px 15px;
-  border-radius: 20px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#showFormBtn:hover {
-  transform: scale(1.05);
-}
-
 
